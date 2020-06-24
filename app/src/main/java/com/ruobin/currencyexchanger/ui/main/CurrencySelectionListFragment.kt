@@ -38,7 +38,7 @@ class CurrencySelectionListFragment : Fragment(), CurrencyViewHolder.CurrencySel
 
     override fun onItemClick(currencySelection: String) {
         viewModel.addToRecentCurrencyList(currencySelection)
-        (activity as MainActivity).goBackToMainFragment(currencySelection)
+        (activity as MainActivity).backToMainFragmentFrom(this, currencySelection)
     }
 
 }

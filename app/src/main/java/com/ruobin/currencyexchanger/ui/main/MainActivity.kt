@@ -2,6 +2,7 @@ package com.ruobin.currencyexchanger.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.ruobin.currencyexchanger.R
 
 class MainActivity : AppCompatActivity() {
@@ -37,13 +38,13 @@ class MainActivity : AppCompatActivity() {
             .commitAllowingStateLoss()
     }
 
-    fun goBackToMainFragment(selectedCurrency: String) {
+    fun backToMainFragmentFrom(fragment: Fragment, selectedCurrency: String) {
         val bundle = getCurrencySelectionListFragment().arguments
         bundle?.putString("selection", selectedCurrency)
         getMainFragment().arguments = bundle
         supportFragmentManager.popBackStack()
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, getMainFragment())
+            .remove(fragment)
             .commitAllowingStateLoss()
         getMainFragment().updateCurrencyViews()
     }
